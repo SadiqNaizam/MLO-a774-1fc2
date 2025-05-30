@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import defaultTheme from 'tailwindcss/defaultTheme';
 
 export default {
 	darkMode: ["class"],
@@ -52,9 +53,17 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+        /* Custom PRD color mappings */
+        'surface': 'hsl(var(--card))', /* PRD 'surface' mapped to Tailwind 'card' */
+        'primary-text': 'hsl(var(--foreground))', /* PRD 'primaryText' mapped to Tailwind 'foreground' */
+        'secondary-text': 'hsl(var(--secondary-foreground))', /* PRD 'secondaryText' mapped to Tailwind 'secondary-foreground' */
+        'accent-blue': 'hsl(var(--primary))', /* PRD 'accentBlue' mapped to Tailwind 'primary' */
+        'accent-red': 'hsl(var(--destructive))', /* PRD 'accentRed' mapped to Tailwind 'destructive' */
+        'accent-green': 'hsl(var(--accent-green))',
+        'accent-yellow': 'hsl(var(--accent-yellow))',
 				sidebar: {
-					DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
+					DEFAULT: 'hsl(var(--sidebar-background))',      /* PRD 'sidebar' color */
+					foreground: 'hsl(var(--sidebar-foreground))',  /* PRD 'primaryText' for sidebar */
 					primary: 'hsl(var(--sidebar-primary))',
 					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
 					accent: 'hsl(var(--sidebar-accent))',
@@ -64,10 +73,14 @@ export default {
 				}
 			},
 			borderRadius: {
-				lg: 'var(--radius)',
-				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)'
+        /* PRD: default: rounded-md (0.375rem), buttons: rounded (0.25rem) */
+				lg: 'var(--radius)', /* 0.375rem -> rounded-md */
+				md: 'calc(var(--radius) - 2px)', /* 0.375rem - 2px (~0.25rem) -> rounded */
+				sm: 'calc(var(--radius) - 4px)' /* 0.375rem - 4px (~0.125rem) */
 			},
+      fontFamily: {
+        sans: ['Inter', ...defaultTheme.fontFamily.sans], /* PRD: typography.primaryFont */
+      },
 			keyframes: {
 				'accordion-down': {
 					from: {
